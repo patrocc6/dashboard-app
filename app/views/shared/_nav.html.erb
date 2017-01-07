@@ -1,12 +1,9 @@
 <ul class="nav nav-tabs">
-  <li class="active">
+  <li class="<%= active?(root_path) %>">
     <%= link_to "Home", root_path %>
   </li>
-  <li>
+  <li class="<%= active?(projects_path) %>">
     <%= link_to "Projects", projects_path %>
-  </li>
-  <li class="disabled">
-    <a href="#">Messages</a>
   </li>
   <li class="dropdown pull-right">
      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Account<strong class="caret"></strong></a>

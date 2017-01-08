@@ -20,6 +20,7 @@ Track project tasks.
 - Assign a team to a project (admin)
 - Assign team member to tasks
 - Team members can update task dates
+- Allow only admins to access admin dashboard
 
 ## TODO:
 - Form validation notifications

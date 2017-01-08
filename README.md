@@ -21,6 +21,7 @@ Track project tasks.
 - Assign team member to tasks
 - Team members can update task dates
 - x Allow only admins to access admin dashboard
+- Use pundit for user permisions
 
 ## TODO:
 - Form validation notifications

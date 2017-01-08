@@ -16,6 +16,7 @@ group :development, :test do
     gem 'rails-controller-testing', '~> 0.0.3'
     gem 'capybara'
     gem 'database_cleaner'
+    gem 'factory_girl_rails', '~> 4.8'
 end
 
 group :development do

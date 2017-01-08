@@ -5,4 +5,7 @@
   <td>
     <%= truncate(project.description) %>
   </td>
+  <td>
+    <%= link_to 'Edit', edit_project_path(project), id:"edit_#{project.id}" %>
+  </td>
 </tr>

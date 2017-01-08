@@ -2,9 +2,8 @@ require 'rails_helper'
 
 describe 'navigate' do
   before do
-    user = User.create(email: "test@test.com", password: "asdfasdf",
-      password_confirmation: "asdfasdf", first_name: "Jon", last_name: "Snow")
-    login_as(user, :scope => :user)
+    @user = FactoryGirl.create(:user)
+    login_as(@user, :scope => :user)
   end
 
   describe 'index' do
@@ -21,8 +20,8 @@ describe 'navigate' do
     end
 
     it 'has a list of projects' do
-      project1 = Project.create(name: "Project 1", description: "test description")
-      project2 = Project.create(name: "Project 2", description: "test description")
+      project1 = FactoryGirl.create(:project)
+      project2 = FactoryGirl.create(:second_project)
       visit projects_path
       expect(page).to have_content(/Project 1|Project 2/)
     end
@@ -40,10 +39,31 @@ describe 'navigate' do
     it 'can be created from new form page' do
       fill_in 'project[name]', with: "New Project"
       fill_in 'project[description]', with: "New project description"
-
       click_on "Save"
 
       expect(page).to have_content("New project description")
+    end
+  end
+
+  describe 'edit' do
+    before do
+      @project = FactoryGirl.create(:project)
+    end
+
+    it 'can be reached from edit link on index' do
+      visit projects_path
+      click_link "edit_#{@project.id}"
+      expect(page.status_code).to eq(200)
+    end
+
+    it 'can be edited' do
+      visit edit_project_path(@project)
+
+      fill_in 'project[name]', with: "New Project"
+      fill_in 'project[description]', with: "Edited description"
+      click_on "Save"
+
+      expect(page).to have_content("Edited description")
     end
   end
 end

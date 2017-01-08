@@ -27,6 +27,23 @@ describe 'navigate' do
     end
   end
 
+  describe 'new' do
+    it 'has a link from the projects page' do
+      visit projects_path
+      click_button('new_project')
+      expect(page.status_code).to eq(200)
+    end
+  end
+
+  describe 'delete' do
+    it 'can be deleted' do
+      @project = FactoryGirl.create(:project)
+      visit projects_path
+      click_link("delete_project_#{@project.id}")
+      expect(page.status_code).to eq(200)
+    end
+  end
+
   describe 'creation' do
     before do
       visit new_project_path

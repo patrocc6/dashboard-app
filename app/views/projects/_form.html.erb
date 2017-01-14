@@ -7,10 +7,34 @@
       </div>
       <div class="form-group">
         <%= f.label 'Description' %>
-        <%= f.text_area :description, class: 'form-control' %>
+        <%= f.text_area :description, class: 'form-control', style: 'resize: none;' %>
       </div>
+
+      <table class="table table-condensed">
+      	<thead>
+      		<tr>
+      			<th>Phase name</th>
+      			<th style="text-align:center">Actions</th>
+      		</tr>
+      	</thead>
+        <tbody id="phases">
+          <%= f.fields_for :phases do |phase| %>
+            <%= render partial: 'phase_fields', locals: {f: phase} %>
+          <% end %>
+        </tbody>
+      </table>
+
       <div class="form-group">
-      	<%= f.submit 'Save', class: 'btn btn-primary btn-block' %>
+        <%= link_to_add_association 'Add phase', f, :phases,
+          :"data-association-insertion-node" => "tbody#phases",
+          :"data-association-insertion-method" => "append",
+          :partial => "phase_fields",
+          :class => "links btn btn-primary",
+          :id => "add_phase"%>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit 'Save', class: 'btn btn-primary btn-block' %>
       </div>
     <% end %>
   </div>

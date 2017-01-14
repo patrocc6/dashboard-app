@@ -58,7 +58,7 @@ describe 'navigate' do
       fill_in 'project[description]', with: "New project description"
       click_on "Save"
 
-      expect(page).to have_content("New project description")
+      expect(page).to have_content("New Project")
     end
   end
 

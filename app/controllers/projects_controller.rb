@@ -7,12 +7,13 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @project.phases.build
   end
 
   def create
     @project = Project.new(project_params)
 
-    if @project.save
+    if @project.save!
       redirect_to @project, notice: 'Project created successfully'
     else
       render :new
@@ -24,7 +25,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to @project, notice: 'Project updated successfully'
+      redirect_to edit_project_path(@project), notice: 'Project updated successfully'
     else
       render :edit
     end
@@ -34,6 +35,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project.phases.each {|phase| phase.delete} #Destroy related phases
     @project.delete
     redirect_to projects_path, notice: 'Project was deleted successfully'
   end
@@ -41,7 +43,8 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description)
+    params.require(:project).permit(:name, :description, phases_attributes:
+    [:name, :id, :_destroy])
   end
 
   def set_project

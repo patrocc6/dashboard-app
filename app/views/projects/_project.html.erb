@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <%= truncate(project.name) %>
+    <%= link_to truncate(project.name), project_path(project) %>
   </td>
   <td>
     <%= truncate(project.description) %>

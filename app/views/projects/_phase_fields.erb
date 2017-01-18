@@ -1,6 +1,14 @@
 <tr class="nested-fields">
 	<td>
     <%= f.text_field :name, class: 'form-control phase-input' %>
+		<div id="tasks">
+			<%= f.fields_for :tasks do |task| %>
+				<%= render partial: 'tasks/task_fields', locals: {f: task} %>
+			<% end %>
+			<div class="links">
+				<%= link_to_add_association 'Add Task', f, :tasks, partial: 'tasks/task_fields' %>
+			</div>
+		</div>
   </td>
 	<td style="text-align:center; vertical-align:middle">
 		<%= link_to_remove_association "Remove", f %>

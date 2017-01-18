@@ -7,7 +7,8 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @project.phases.build
+    phase = @project.phases.build
+    phase.tasks.build
   end
 
   def create
@@ -35,7 +36,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.phases.each {|phase| phase.delete} #Destroy related phases
     @project.delete
     redirect_to projects_path, notice: 'Project was deleted successfully'
   end
@@ -43,8 +43,12 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, phases_attributes:
-    [:name, :id, :_destroy])
+    params.require(:project).permit(:name, :description,
+    phases_attributes: [
+      :name, :id, :_destroy,
+      tasks_attributes: [:name, :lead_time, :id, :_destroy]
+    ]
+    )
   end
 
   def set_project

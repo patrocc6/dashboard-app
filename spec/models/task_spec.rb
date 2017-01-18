@@ -31,4 +31,43 @@ RSpec.describe Task, type: :model do
       expect(@task.due_date).to eq(Date.new(2017, 1, 17))
     end
   end
+
+  describe "status" do
+    before do
+      @task = FactoryGirl.create(:task)
+    end
+
+    it "shows not started" do
+      @task.start_date = nil
+      expect(@task.status).to eq("not started")
+    end
+
+    it "shows in progress" do
+      @task.start_date = "2017-1-1"
+      @task.lead_time = 99999
+      @task.end_date = nil
+      expect(@task.status).to eq("in progress")
+    end
+
+    it "shows late" do
+      @task.start_date = "2017-1-1"
+      @task.lead_time = 1
+      @task.end_date = nil
+      expect(@task.status).to eq("late")
+    end
+
+    it "shows completed late" do
+      @task.start_date = "2017-1-1"
+      @task.lead_time = 1
+      @task.end_date = "2017-1-3"
+      expect(@task.status).to eq("completed late")
+    end
+
+    it "shows completed on time" do
+      @task.start_date = "2017-1-1"
+      @task.lead_time = 10
+      @task.end_date = "2017-1-3"
+      expect(@task.status).to eq("completed on time")
+    end
+  end
 end

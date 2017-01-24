@@ -30,6 +30,11 @@ RSpec.describe Task, type: :model do
       @task.lead_time = 3
       expect(@task.due_date).to eq(Date.new(2017, 1, 17))
     end
+
+    it "cannot be created with a negative lead time" do
+      @task.lead_time = -10
+      expect(@task).not_to be_valid
+    end
   end
 
   describe "status" do

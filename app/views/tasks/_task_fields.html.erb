@@ -1,5 +1,12 @@
-<div class="nested-fields">
-  <%= f.text_field :name, class: 'form-control' %>
-  <%= f.number_field :lead_time, class: 'form-control' %>
-  <%= link_to_remove_association "Remove", f %>
-</div>
+<tr class="nested-fields">
+  <td>
+    <%= f.text_field :name, class: 'form-control' %>
+  </td>
+  <td>
+    <%= f.number_field :lead_time, class: 'form-control' %>
+  </td>
+  <td>
+    <%= link_to_remove_association '<span class="glyphicon glyphicon-minus"></span>'.html_safe,
+    f, class: "btn btn-danger" %>
+  </td>
+</tr>

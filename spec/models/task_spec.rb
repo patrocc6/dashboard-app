@@ -35,6 +35,11 @@ RSpec.describe Task, type: :model do
       @task.lead_time = -10
       expect(@task).not_to be_valid
     end
+
+    it "cannot be created with a lead time of 0" do
+      @task.lead_time = 0
+      expect(@task).not_to be_valid
+    end
   end
 
   describe "status" do

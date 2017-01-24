@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :phase
   validates_presence_of :name, :lead_time
-  validates :lead_time, :numericality => { :greater_than_or_equal_to => 0 }
+  validates :lead_time, :numericality => { :greater_than => 0 }
 
   attr_reader :due_date, :status
 

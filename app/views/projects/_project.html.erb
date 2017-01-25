@@ -6,7 +6,12 @@
     <%= truncate(project.description) %>
   </td>
   <td>
-    <%= link_to 'Edit', edit_project_path(project), id:"edit_#{project.id}" %> |
-    <%= link_to 'Delete', project_path(project), method: :delete, id:"delete_project_#{project.id}", data: {confirm: 'Are you sure?'} %>
+    <%= link_to '', edit_project_path(project), id:"edit_#{project.id}",
+      class:"glyphicon glyphicon-pencil index-icons"%>
+  </td>
+  <td>
+    <%= link_to '', project_path(project), method: :delete,
+      id:"delete_project_#{project.id}", data: {confirm: 'Are you sure?'},
+      class:"glyphicon glyphicon-trash index-icons" %>
   </td>
 </tr>

@@ -1,12 +1,23 @@
 <tr class="nested-fields">
 	<td>
-    <%= f.text_field :name, class: 'form-control phase-input' %>
+		<div class="input-group col-xs-3">
+      <%= f.text_field :name, class: 'form-control phase-input' %>
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Actions <span class="caret"></span>
+				</button>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><%= link_to_remove_association "Delete Phase", f %></li>
+					<li><a href="#">TODO: Move phase position</a></li>
+        </ul>
+      </div><!-- /btn-group -->
+    </div><!-- /input-group -->
 
 		<table class="table table-condensed table-striped">
 			<thead>
 				<tr>
-					<th>Task name</th>
-					<th>Lead time (days)</th>
+					<th class="col-xs-3">Task name</th>
+					<th class="col-xs-1">Lead time (days)</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -24,9 +35,5 @@
 			:"data-association-insertion-node" => "table",
 			:partial => "tasks/task_fields",
 			:class => "btn btn-primary" %>
-	</td>
-
-	<td style="text-align:center; vertical-align:middle">
-		<%= link_to_remove_association "Remove", f %>
 	</td>
 </tr>

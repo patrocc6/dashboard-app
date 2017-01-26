@@ -15,7 +15,7 @@
   				<h1>
   					Dashboards <small></small>
   				</h1>
-          <%= render 'shared/nav' %>
+          <%= render 'shared/nav' if user_signed_in?%>
           <%= yield %>
         </div>
       </div>

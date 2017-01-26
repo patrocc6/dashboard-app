@@ -3,12 +3,7 @@
   <% @project.phases.each do |phase| %>
   <div class="list-group-item">
     <h4 class="list-group-item-heading"><%= phase.name %></h4>
-    <div class="list-group-item">
-      Task placeholder
-    </div>
-    <div class="list-group-item">
-      Task placeholder
-    </div>
+    <%= render phase.tasks %>
   </div>
   <% end %>
 </div>

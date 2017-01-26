@@ -22,9 +22,15 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    if current_user.admin?
+      render :edit
+    else
+      redirect_to root_path, notice: 'Not allowed to edit projects'
+    end
   end
 
   def update
+    authorize @project
     if @project.update(project_params)
       redirect_to edit_project_path(@project), notice: 'Project updated successfully'
     else

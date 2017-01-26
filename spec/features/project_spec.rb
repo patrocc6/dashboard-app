@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'navigate' do
   before do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:admin_user)
     login_as(@user, :scope => :user)
   end
 
@@ -84,6 +84,8 @@ describe 'navigate' do
     end
 
     it 'cannot be edited by a regular user' do
+      @user = FactoryGirl.create(:user)
+      login_as(@user, :scope => :user)
       visit edit_project_path(@project)
       expect(current_path).to eq(root_path)
     end

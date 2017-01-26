@@ -82,5 +82,10 @@ describe 'navigate' do
 
       expect(page).to have_content("Edited description")
     end
+
+    it 'cannot be edited by a regular user' do
+      visit edit_project_path(@project)
+      expect(current_path).to eq(root_path)
+    end
   end
 end

@@ -7,11 +7,11 @@
   </td>
   <td>
     <%= link_to '', edit_project_path(project), id:"edit_#{project.id}",
-      class:"glyphicon glyphicon-pencil index-icons" if current_user.admin?%>
+      class:"glyphicon glyphicon-pencil index-icons" if policy(project).update?%>
   </td>
   <td>
     <%= link_to '', project_path(project), method: :delete,
       id:"delete_project_#{project.id}", data: {confirm: 'Are you sure?'},
-      class:"glyphicon glyphicon-trash index-icons" if current_user.admin?%>
+      class:"glyphicon glyphicon-trash index-icons" if policy(project).update?%>
   </td>
 </tr>

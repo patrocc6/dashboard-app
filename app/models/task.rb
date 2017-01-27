@@ -16,7 +16,7 @@ class Task < ApplicationRecord
     elsif !self.end_date.nil?
       case
         when self.end_date <= self.due_date
-          'completed on time'
+          'completed'
         when self.end_date > self.due_date
           'completed late'
       end

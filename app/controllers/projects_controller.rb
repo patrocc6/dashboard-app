@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    authorize Project
     @project = Project.new
     phase = @project.phases.build
     phase.tasks.build
@@ -59,5 +60,10 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
+  end
+
+  def user_not_authorized
+    flash[:alert] = "You do not have permission to perform that action"
+    redirect_to(root_path)
   end
 end

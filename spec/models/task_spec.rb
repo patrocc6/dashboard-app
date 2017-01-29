@@ -77,7 +77,7 @@ RSpec.describe Task, type: :model do
       @task.start_date = "2017-1-1"
       @task.lead_time = 10
       @task.end_date = "2017-1-3"
-      expect(@task.status).to eq("completed on time")
+      expect(@task.status).to eq("completed")
     end
   end
 end

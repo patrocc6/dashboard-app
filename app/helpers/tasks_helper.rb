@@ -5,23 +5,23 @@ module TasksHelper
   end
 
   def status_tag(status)
-    status_tag_builder(status)
+    case status
+    when "not started"
+      status_tag_builder(status, 'default')
+    when "in progress"
+      status_tag_builder(status, 'primary')
+    when "late"
+      status_tag_builder(status, 'warning')
+    when "completed"
+      status_tag_builder(status, 'success')
+    when "completed late"
+      status_tag_builder(status, 'danger')
+    end
   end
 
   private
 
-  def status_tag_builder(status)
-    case status
-    when "not started"
-      "<span class='label label-default'>#{status.titleize}</span>".html_safe
-    when "in progress"
-      "<span class='label label-primary'>#{status.titleize}</span>".html_safe
-    when "late"
-      "<span class='label label-warning'>#{status.titleize}</span>".html_safe
-    when "completed"
-      "<span class='label label-success'>#{status.titleize}</span>".html_safe
-    when "completed late"
-      "<span class='label label-danger'>#{status.titleize}</span>".html_safe
-    end
+  def status_tag_builder(status, label)
+    "<span class='label label-#{label}'>#{status.titleize}</span>".html_safe
   end
 end

@@ -13,11 +13,6 @@
       </div>
 
       <table class="table table-condensed">
-      	<thead>
-      		<tr>
-      			<th>Phase name</th>
-      		</tr>
-      	</thead>
         <tbody id="phases">
           <%= f.fields_for :phases do |phase| %>
             <%= render partial: 'phase_fields', locals: {f: phase} %>

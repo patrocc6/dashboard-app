@@ -1,3 +1,7 @@
-// Place all the styles related to the Phases controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.phase-panel-body {
+  padding-bottom: 0px;
+}
+
+.striped div.row:nth-child(even) {
+   background-color: #F5F5F5;
+}

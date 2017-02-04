@@ -1,0 +1,30 @@
+<div id="task_<%= @task.id %>" class="row row-task">
+  <%= form_for @task, remote:true, authenticity_token:true do |f| %>
+    <div class="col-xs-3 center-vertical">
+      <%= @task.name %>
+    </div>
+    <div class="col-xs-2 text-center center-vertical">
+      <%= f.text_field :start_date, class:'form-control text-center datepicker', 'data-provide'=>'datepicker',
+      value:"#{format_value(@task.start_date)}"%>
+    </div>
+    <div class="col-xs-2 text-center center-vertical">
+      <%= f.text_field :end_date, class:'form-control text-center datepicker', 'data-provide'=>'datepicker',
+      value:"#{format_value(@task.end_date)}" %>
+    </div>
+    <div class="col-xs-2 text-center center-vertical">
+      <%= format_value(@task.due_date) %>
+    </div>
+    <div class="col-xs-2 text-center center-vertical">
+      <%= status_tag(@task.status) %>
+    </div>
+    <div class="col-xs-1 text-center center-vertical">
+      <%= link_to '', remote:true, :onclick => "$('#edit_task_#{@task.id}').submit()",
+          id:"update_task_#{@task.id}" do %>
+        <span class="glyphicon glyphicon-ok task-icons"></span>
+      <% end %>
+      <%= link_to task_path(@task.id), remote:true do %>
+        <span class="glyphicon glyphicon-remove task-icons"></span>
+      <% end %>
+    </div>
+  <% end %>
+</div>

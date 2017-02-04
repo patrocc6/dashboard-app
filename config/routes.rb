@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :phases
   end
 
+  resources :tasks
+
   devise_for :users, skip: [:registrations]
   root to: 'static#homepage'
 end

@@ -25,3 +25,7 @@ Track project tasks.
 
 ## TODO:
 - Form validation notifications
+- Refactor task date inputs
+- Write specs for editing and updating tasks
+- Prevent start date to come before end date
+- Prevent end date input without a start date

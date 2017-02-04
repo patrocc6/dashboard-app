@@ -8,19 +8,4 @@ describe 'navigate' do
     @project = FactoryGirl.create(:project)
     @phase = FactoryGirl.create(:phase)
   end
-
-  describe 'add/remove' do
-    before do
-      
-    end
-
-    xit 'can be added to a project' do
-
-    end
-
-    xit 'can be removed from a project' do
-
-    end
-  end
-
 end

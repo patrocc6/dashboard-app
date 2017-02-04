@@ -1,20 +1,24 @@
-<tr>
-  <td class="col-xs-3">
+<div id="task_<%= task.id %>" class="row row-task">
+  <div class="col-xs-3 center-vertical">
     <%= task.name %>
-  </td>
-  <td class="col-xs-2 text-center">
+  </div>
+  <div class="col-xs-2 text-center center-vertical">
     <%= format_value(task.start_date) %>
-  </td>
-  <td class="col-xs-2 text-center">
+  </div>
+  <div class="col-xs-2 text-center center-vertical">
     <%= format_value(task.end_date) %>
-  </td>
-  <td class="col-xs-2 text-center">
+  </div>
+  <div class="col-xs-2 text-center center-vertical">
     <%= format_value(task.due_date) %>
-  </td>
-  <td class="col-xs-2 text-center">
+  </div>
+  <div class="col-xs-2 text-center center-vertical">
     <%= status_tag(task.status) %>
-  </td>
-  <td class="col-xs-1 text-center">
-    <span class="glyphicon glyphicon-pencil"></span>
-  </td>
-</tr>
+  </div>
+  <div class="col-xs-1 text-center center-vertical">
+    <%= link_to '', edit_task_path(task.id),
+        remote: true,
+        class: 'glyphicon glyphicon-pencil task-icons',
+        id: "edit_task_#{task.id}"
+    %>
+  </div>
+</div>

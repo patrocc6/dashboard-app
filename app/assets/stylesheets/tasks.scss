@@ -1,0 +1,25 @@
+.task-header {
+  font-weight: bold;
+  border-bottom-width:2px;
+  border-bottom-color: #DDDDDD;
+  border-bottom-style: solid;
+}
+
+.task-icons {
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+.task-icons:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.task-icons:focus {
+  text-decoration: none;
+}
+
+.row-task {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}

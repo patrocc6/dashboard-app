@@ -1,39 +1,44 @@
-<tr class="nested-fields">
-	<td>
-		<div class="input-group col-xs-6">
-      <%= f.text_field :name, class: 'form-control phase-input', placeholder: 'Phase Name'%>
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Actions <span class="caret"></span>
-				</button>
-        <ul class="dropdown-menu dropdown-menu-right">
-          <li><%= link_to_remove_association "Delete Phase", f %></li>
-					<li><a href="#">TODO: Move phase position</a></li>
-        </ul>
-      </div><!-- /btn-group -->
-    </div><!-- /input-group -->
+<div class="panel panel-default nested-fields">
 
-		<table class="table table-condensed table-striped">
-			<thead>
-				<tr>
-					<th class="col-xs-5">Task name</th>
-					<th class="col-xs-1 text-center">Days</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody class="tasks">
-				<%= f.fields_for :tasks do |task| %>
-					<%= render partial: 'tasks/task_fields', locals: {f: task} %>
-				<% end %>
-			</tbody>
-		</table>
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col-xs-6">
+					<div class="input-group">
+						<strong>
+							<%= f.text_field :name, class: 'form-control phase-input', placeholder: 'Phase Name'%>
+						</strong>
+						<span class="input-group-btn">
+							<%= link_to_remove_association '<span class="glyphicon glyphicon-minus"></span>'.html_safe, f, class: 'btn btn-danger' %>
+						</span>
+					</div>
+				</div>
+			</div>
+    </div>
 
-		<%= link_to_add_association '<span class="glyphicon glyphicon-plus"></span>'.html_safe,
-			f, :tasks,
-			:"data-association-insertion-method" => "append",
-			:"data-association-insertion-traversal" => "prev",
-			:"data-association-insertion-node" => "table",
-			:partial => "tasks/task_fields",
-			:class => "btn btn-primary" %>
-	</td>
-</tr>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-xs-5"><label>Task name</label></div>
+				<div class="col-xs-1 text-center"><label>Days</label></div>
+				<div></div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="tasks">
+						<%= f.fields_for :tasks do |task| %>
+							<%= render partial: 'tasks/task_fields', locals: {f: task} %>
+						<% end %>
+					</div>
+					<%= link_to_add_association '<span class="glyphicon glyphicon-plus"></span>'.html_safe,
+						f, :tasks,
+						:"data-association-insertion-method" => "append",
+						:"data-association-insertion-traversal" => "prev",
+						:"data-association-insertion-node" => "div div.tasks",
+						:partial => "tasks/task_fields",
+						:class => "btn btn-primary" %>
+				</div>
+			</div>
+		</div>
+
+</div>

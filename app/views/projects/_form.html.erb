@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-xs-12">
     <%= form_for @project do |f| %>
+    <div class="row">
       <div class="col-xs-3" >
         <div class="form-group">
           <%= f.label 'Name' %>
@@ -11,18 +12,19 @@
           <%= f.text_area :description, class: 'form-control', style: 'resize: none;' %>
         </div>
       </div>
+    </div>
 
-      <table class="table table-condensed">
-        <tbody id="phases">
+      <div class="row">
+        <div class="col-xs-12" id="phases">
           <%= f.fields_for :phases do |phase| %>
             <%= render partial: 'phase_fields', locals: {f: phase} %>
           <% end %>
-        </tbody>
-      </table>
+        </div>
+      </div>
 
       <div class="form-group">
         <%= link_to_add_association 'Add phase', f, :phases,
-          :"data-association-insertion-node" => "tbody#phases",
+          :"data-association-insertion-node" => "div#phases",
           :"data-association-insertion-method" => "append",
           :partial => "phase_fields",
           :class => "links btn btn-primary",

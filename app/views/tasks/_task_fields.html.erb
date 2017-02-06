@@ -1,12 +1,12 @@
-<tr class="nested-fields">
-  <td>
+<div class="row nested-fields row-task">
+  <div class="col-xs-5">
     <%= f.text_field :name, class: 'form-control' %>
-  </td>
-  <td>
-    <%= f.number_field :lead_time, class: 'form-control' %>
-  </td>
-  <td>
+  </div>
+  <div class="col-xs-1 col-days">
+    <%= f.number_field :lead_time, class: 'form-control text-center' %>
+  </div>
+  <div class="col-xs-1">
     <%= link_to_remove_association '<span class="glyphicon glyphicon-minus"></span>'.html_safe,
     f, class: "btn btn-danger" %>
-  </td>
-</tr>
+  </div>
+</div>

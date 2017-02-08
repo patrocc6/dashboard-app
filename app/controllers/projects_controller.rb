@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
   def update
     authorize @project
     if @project.update(project_params)
-      redirect_to project_path(@project), notice: 'Project updated successfully'
+      redirect_to edit_project_path(@project), notice: 'Project updated successfully'
     else
       render :edit
     end

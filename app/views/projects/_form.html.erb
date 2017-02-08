@@ -15,7 +15,7 @@
     </div>
 
       <div class="row">
-        <div class="col-xs-12" id="phases" data-update-url="<%= sort_project_phases_url(@project.id) %>">
+        <div class="col-xs-12" id="phases">
           <%= f.fields_for :phases, f.object.phases.order(:position), include_id: false do |phase| %>
           <div id="phase_<%= phase.object.id %>" >
             <%= render partial: 'phase_fields', locals: {f: phase} %>

@@ -15,14 +15,16 @@
     </div>
 
       <div class="row">
-        <div class="col-xs-12" id="phases">
-          <%= f.fields_for :phases do |phase| %>
+        <div class="col-xs-12" id="phases" data-update-url="<%= sort_project_phases_url(@project.id) %>">
+          <%= f.fields_for :phases, f.object.phases.order(:position), include_id: false do |phase| %>
+          <div id="phase_<%= phase.object.id %>" >
             <%= render partial: 'phase_fields', locals: {f: phase} %>
+          </div>
           <% end %>
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="links form-group">
         <%= link_to_add_association 'Add phase', f, :phases,
           :"data-association-insertion-node" => "div#phases",
           :"data-association-insertion-method" => "append",

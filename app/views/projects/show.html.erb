@@ -1,7 +1,7 @@
 <h1><%= @project.name %></h1>
 
 <div class="panel-group">
-<% @project.phases.each do |phase| %>
+<% @project.phases.order(:position).each do |phase| %>
   <div class="panel panel-default panel-phase">
 
     <div class="panel-heading">

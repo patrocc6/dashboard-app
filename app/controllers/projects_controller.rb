@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
   def update
     authorize @project
     if @project.update(project_params)
-      redirect_to edit_project_path(@project), notice: 'Project updated successfully'
+      redirect_to project_path(@project), notice: 'Project updated successfully'
     else
       render :edit
     end
@@ -65,5 +65,12 @@ class ProjectsController < ApplicationController
   def user_not_authorized
     flash[:alert] = "You do not have permission to perform that action"
     redirect_to(root_path)
+  end
+
+  #Tried to get order of the phases
+  def get_phases_order(project_params)
+    ordered_ids = []
+    project_params[:phases_attributes].map {|key, value| ordered_ids << value[:id] }
+    byebug
   end
 end

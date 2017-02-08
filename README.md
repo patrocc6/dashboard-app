@@ -29,3 +29,4 @@ Track project tasks.
 - Write specs for editing and updating tasks
 - Prevent start date to come before end date
 - Prevent end date input without a start date
+- Sorting of phases/tasks in backend 

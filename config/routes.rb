@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   end
 
   resources :projects do
-    resources :phases
+    resources :phases do
+      collection { post :sort}
+    end
   end
 
   resources :tasks

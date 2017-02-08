@@ -1,3 +1,16 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on "turbolinks:load", ->
+  $('#phases').sortable
+    axis: 'y'
+    cursor: 'move'
+    containment: 'parent'
+    tolerance: 'pointer'
+    handle: '.sort-handle'
+    placeholder: 'sortable-placeholder'
+    forcePlaceholderSize: true
+
+  $('.tasks').sortable
+    axis: 'y'
+    cursor: 'move'
+    containment: 'parent'
+    tolerance: 'pointer'
+    handle: '.sort-handle'

@@ -15,4 +15,14 @@ RSpec.describe Project, type: :model do
       expect(@project).not_to be_valid
     end
   end
+
+  describe "deletion" do
+    before do
+      @project = FactoryGirl.create(:project_with_phase)
+    end
+
+    it "can be deleted successfully" do
+      expect{ @project.delete }.not_to raise_error
+    end
+  end
 end

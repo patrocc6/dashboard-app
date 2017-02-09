@@ -9,3 +9,9 @@ FactoryGirl.define do
     description "This is a project description."
   end
 end
+
+FactoryGirl.define do
+  factory :project_with_phase, :parent => :project do |project|
+    phases { build_list :phase, 1 }
+  end
+end

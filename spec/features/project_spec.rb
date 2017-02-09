@@ -80,7 +80,7 @@ describe 'navigate' do
       fill_in 'project[description]', with: "Edited description"
       click_on "Save"
 
-      expect(page).to have_content("Edited description")
+      expect(find_field('project[description]').value).to have_content('Edited description')
     end
 
     it 'cannot be edited by a regular user' do

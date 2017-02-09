@@ -22,7 +22,7 @@ RSpec.describe Project, type: :model do
     end
 
     it "can be deleted successfully" do
-      expect{ @project.delete }.not_to raise_error
+      expect{ @project.destroy }.not_to raise_error
     end
   end
 end

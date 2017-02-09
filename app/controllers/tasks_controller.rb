@@ -7,6 +7,10 @@ class TasksController < ApplicationController
   def edit
   end
 
+  def destroy
+    @task.destroy
+  end
+
   def update
     respond_to do |format|
       if @task.update(format_date_input(task_params))

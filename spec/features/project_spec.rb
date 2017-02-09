@@ -40,7 +40,7 @@ describe 'navigate' do
       @project = FactoryGirl.create(:project)
       visit projects_path
       click_link("delete_project_#{@project.id}")
-      expect(page.status_code).to eq(200)
+      expect(Project.all.count).to eq(0)
     end
   end
 
